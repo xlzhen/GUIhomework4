@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<!--
+Name: Xiaoling Zheng, xiaoling_zheng@student.uml.edu
+Computer Science Department, UMass Lowell
+COMP.4610, GUI Programming I
+File: hw4.html
+Created: 12-Nov-2017
+Last updated by XZ: 12-Nov-2017, 23:20pm
+Description: This is page provides interface on car financing comparisons. 
+-->
+<html lang="en">
+    <head>
+        <title>Dynamic Table</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="hw4.css">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script src="hw4.js"></script>
+        <!-- links to external stylesheet -->
+    </head>
+    
+    <body>
+        <h1>Dynamic Table</h1>
+
+        <div class="container">
+        <hr>
+    
+        <!-- start of form -->
+        <form id = "car_form">
+            <p id = "instruction"> 
+                * Please enter all required fields
+            </p>
+            <!-- start of form rows -->
+            <div class="form-group row">
+                <!-- division for financing option 1 unit indicators-->
+             
+                <div class="col-xs-2"> <!--attribute-->
+                    <label> </label>
+                    <p class = "labels"> Car Price ($)</p> <!--range of msrp-->
+                    <p class = "labels"> Mile Per Gallon </p> <!--range of mpg-->
+                </div>
+                
+                <div class="col-xs-2"> <!--start range-->
+                    <label> </label>
+                    <input class="form-control" id="car_1" type="number" step = 0.01 placeholder = "(required)" required>
+                    <input class="form-control" id= "mpg_1" type="number" step = 0.01 placeholder = "(required)" required>
+                </div>
+                
+                
+                <div class="col-xs-2"> <!-- end range -->
+                    <label>  </label>
+                    <input class="form-control" id="car_2" type="number" step = 0.01 placeholder = "(required)" required>
+                    <input class="form-control" id="mpg_2" type="number" step = 0.01 placeholder = "(required)" required>
+                </div>
+                
+                <div class="col-xs-2"> <!-- end range -->
+                    <label>  </label>
+                    <input class="form-control" id="car_3" type="number" step = 0.01 placeholder = "(required)" required>
+                    <input class="form-control" id="mpg_3" type="number" step = 0.01 placeholder = "(required)" required>
+                </div>
+                
+                <div class="col-xs-2"> <!-- end range -->
+                    <label>  </label>
+                    <input class="form-control" id="car_4" type="number" step = 0.01 placeholder = "(required)" required>
+                    <input class="form-control" id="mpg_4" type="number" step = 0.01 placeholder = "(required)" required>
+                </div>
+                
+                <div class="col-xs-2"> <!-- end range -->
+                    <label>  </label>
+                    <input class="form-control" id="car_5" type="number" step = 0.01 placeholder = "(required)" required>
+                    <input class="form-control" id="mpg_5" type="number" step = 0.01 placeholder = "(required)" required>
+                </div>
+                
+                
+            </div>
+            
+            <div class= "form-group row">
+                
+                <div class="col-xs-3">
+                    <label>  </label> 
+                    <!-- space holder for formatting --> 
+                    <p class = "labels"> Dealer's Discount </p>
+                    <p class = "labels"> Additional Rebate </p>
+                    <p class = "labels"> Down Payment </p>
+                    <p class = "labels"> Market Interest </p>
+                    <p class = "labels"> # Month Installments </p>
+                    <p class = "labels"> Estimated miles per Year </p>
+                </div>
+                <!-- division for labels -->
+                <div class="col-xs-2">
+                    <label>  </label>
+                    <input class="form-control" id="discount" type="number" step = 0.01 placeholder = "(required)" required>
+                    <input class="form-control" id="rebate" type="number" step = 0.01 placeholder = "(required)" required>
+                    <input class="form-control" id="downpayment" type="number" step = 0.01 placeholder = "(required)" required >
+                    <input class="form-control" id="interest" type="number" step = 0.01 placeholder = "(required)" required >
+                    <input class="form-control" id="number_months" type="number" step = 0.01 placeholder = "(required)" required >
+                    <input class="form-control" id="mile_per_year" type="number" step = 0.01 placeholder = "(required)" required >
+                </div>
+
+                <div class="col-xs-1">
+                    <label> </label>
+                    <p class = "labels">$</p>
+                    <p class = "labels">$</p>
+                    <p class = "labels">%</p>
+                    <p class = "labels">%</p>
+                    <p class = "labels">#</p>
+                    <p class = "labels">miles</p>
+                </div>
+                
+                <div class ="col-xs-2">
+                    <label> </label>
+                    <p class = "labels">Gas price per gallon</p>
+                </div>
+                
+                <div class ="col-xs-2">
+                    <label> </label>
+                    <input class="form-control" id="price_per_gallon" type="number" step = 0.01 placeholder = "(required)" required>
+                </div>
+
+                <div class="col-xs-1">
+                    <label> </label>
+                    <p class = "labels">$</p>
+                </div>
+            </div>
+            <!-- end of form rows-->
+        
+            <div class="col-xs-10"> </div>
+            <!-- placeholder for formatting -->
+        
+            <div class="col-xs-1">
+                <button type="button" onclick="reset_func()" class="btn btn-default">Reset</button>
+            </div>
+            <!-- reset button -->
+        
+            <div class="col-xs-1">
+                <button type="button" onclick="show()" class="btn btn-primary">Submit </button>
+            </div>
+            
+            <br><br>
+            
+            <hr>
+            <!-- submit form button -->
+        </form>
+        <!-- end of form -->
+        
+        <div id = "dynamic">
+        
+            <div id="tabs">
+                <ul>
+                    <li>
+                        <a href="#tabs-1">mpg/car prices comparison</a>
+                    </li>
+                    <li>
+                        <a href="#tabs-2">features comparison</a>
+                    </li>
+                </ul>
+                
+                <div id="tabs-1">    
+                    <table class="table table-hover">
+                   
+                        <tr>
+                            <th>mile per gallon\car price ($)</th>
+                            <th id = "car_p1">price 1</th>
+                            <th id = "car_p2">price 2</th>
+                            <th id = "car_p3">price 3</th>
+                            <th id = "car_p4">price 4</th>
+                            <th id = "car_p5">price 5</th>
+                        </tr>
+                    
+                        <tr>
+                            <th id = "mpg1"> mpg 1</th>
+                            <td id = "m1c1"> </td>
+                            <td id = "m1c2"> </td>
+                            <td id = "m1c3"> </td>
+                            <td id = "m1c4"> </td>
+                            <td id = "m1c5"> </td>
+                        </tr>
+                    
+                        <tr>
+                            <th id = "mpg2"> mpg 2</th>
+                            <td id = "m2c1"> </td>
+                            <td id = "m2c2"> </td>
+                            <td id = "m2c3"> </td>
+                            <td id = "m2c4"> </td>
+                            <td id = "m2c5"> </td>
+                        </tr>
+                        
+                        <tr>
+                            <th id = "mpg3"> mpg 3</th>
+                            <td id = "m3c1"> </td>
+                            <td id = "m3c2"> </td>
+                            <td id = "m3c3"> </td>
+                            <td id = "m3c4"> </td>
+                            <td id = "m3c5"> </td>
+                        </tr>
+                    
+                        <tr>
+                            <th id = "mpg4"> mpg 4</th>
+                            <td id = "m4c1"> </td>
+                            <td id = "m4c2"> </td>
+                            <td id = "m4c3"> </td>
+                            <td id = "m4c4"> </td>
+                            <td id = "m4c5"> </td>
+                        </tr>
+                    
+                        <tr>
+                            <th id = "mpg5"> mpg 5</th>
+                            <td id = "m5c1"> </td>
+                            <td id = "m5c2"> </td>
+                            <td id = "m5c3"> </td>
+                            <td id = "m5c4"> </td>
+                            <td id = "m5c5"> </td>
+                        </tr>
+                    </table> 
+                
+                    <p>
+                        * resulting cells represent cost per mile($), cost per month($) pairs
+                    </p> 
+                </div>
+            
+                <div id="tabs-2">
+                    <p>
+                        Car comparisons
+                    </p>  
+                </div>    
+                
+                <hr>
+                
+            </div>
+        </div>
+        </div>
+
+    </body>
+
+</html>
